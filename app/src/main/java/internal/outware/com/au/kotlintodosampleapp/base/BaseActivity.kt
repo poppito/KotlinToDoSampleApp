@@ -8,4 +8,4 @@ class BaseActivity<P : Presenter<V> , V> : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
-}
+ }
