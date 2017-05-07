@@ -11,8 +11,24 @@ class ToDoListDbHelper(context: Context?, name: String?, factory: SQLiteDatabase
 
 
     override fun onCreate(db: SQLiteDatabase?) {
+        db!!.execSQL(ToDoDbOps.createDb())
     }
 
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
+        db!!.execSQL(ToDoDbOps.dropDb())
+    }
+
+
+    companion object ToDoDbOps {
+
+        fun createDb() : String {
+            return "CREATE TABLE " + ToDoEntryContract.ToDoList.TABLE_NAME + " (" +
+                            ToDoEntryContract.ToDoList.COLUMN_NAME_TITLE + " TEXT," +
+                            ToDoEntryContract.ToDoList.COLUMN_NAME_CONTENT + " TEXT)";
+        }
+
+        fun dropDb() : String {
+            return "DROP TABLE IF EXISTS " + ToDoEntryContract.ToDoList.TABLE_NAME
+        }
     }
 }

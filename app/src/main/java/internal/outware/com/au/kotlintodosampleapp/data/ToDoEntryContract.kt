@@ -4,7 +4,7 @@ import android.provider.BaseColumns
 
 class ToDoEntryContract {
 
-    companion object Reminder : BaseColumns {
+    companion object ToDoList : BaseColumns {
         val TABLE_NAME = "Reminders"
         val COLUMN_NAME_TITLE = "title"
         val COLUMN_NAME_CONTENT = "Content"
