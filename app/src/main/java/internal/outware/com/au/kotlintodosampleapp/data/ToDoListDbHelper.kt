@@ -11,11 +11,11 @@ class ToDoListDbHelper(context: Context?, name: String?, factory: SQLiteDatabase
 
 
     override fun onCreate(db: SQLiteDatabase?) {
-        db!!.execSQL(ToDoDbOps.createDb())
+        db?.execSQL(ToDoDbOps.createDb())
     }
 
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
-        db!!.execSQL(ToDoDbOps.dropDb())
+        db?.execSQL(ToDoDbOps.dropDb())
     }
 
 
