@@ -4,11 +4,7 @@ import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 
-class ToDoListDbHelper(context: Context?, name: String?, factory: SQLiteDatabase.CursorFactory?, version: Int) : SQLiteOpenHelper(context, name, factory, version) {
-
-    val DATABASE_VERSION = 1
-    val DATABASE_NAME = "ToDoListDb.db"
-
+class ToDoListDbHelper(context: Context?) : SQLiteOpenHelper(context,"ToDoListDb.db", null, 1) {
 
     override fun onCreate(db: SQLiteDatabase?) {
         db?.execSQL(ToDoDbOps.createDb())
