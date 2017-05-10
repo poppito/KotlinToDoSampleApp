@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    tools:context="internal.outware.com.au.kotlintodosampleapp.view.MainActivity">
+    tools:context="com.noni.au.app.kotlintodosampleapp.view.MainActivity">
     
     <TextView
         android:id="@+id/txt_hello_world"

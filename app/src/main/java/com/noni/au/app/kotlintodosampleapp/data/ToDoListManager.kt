@@ -1,7 +1,7 @@
-package internal.outware.com.au.kotlintodosampleapp.data
+package com.noni.au.app.kotlintodosampleapp.data
 
 import android.content.Context
-import internal.outware.com.au.kotlintodosampleapp.domain.ReminderRepository
+import com.noni.au.app.kotlintodosampleapp.domain.ReminderRepository
 
 class ToDoListManager(val context: Context?) : ReminderRepository {
 

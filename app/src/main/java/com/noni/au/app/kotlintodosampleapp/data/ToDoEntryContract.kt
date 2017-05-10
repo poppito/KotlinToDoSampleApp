@@ -1,4 +1,4 @@
-package internal.outware.com.au.kotlintodosampleapp.data
+package com.noni.au.app.kotlintodosampleapp.data
 
 import android.provider.BaseColumns
 
