@@ -1,4 +1,4 @@
-package internal.outware.com.au.kotlintodosampleapp.base
+package com.noni.au.app.kotlintodosampleapp.base
 
 interface Presenter<V> {
     fun onViewAttached(view : V)

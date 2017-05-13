@@ -1,9 +1,9 @@
-package internal.outware.com.au.kotlintodosampleapp.view
+package com.noni.au.app.kotlintodosampleapp.view
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.widget.TextView
-import internal.outware.com.au.kotlintodosampleapp.R
+import com.noni.au.app.kotlintodosampleapp.R
 
 class MainActivity : AppCompatActivity() {
 
