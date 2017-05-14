@@ -4,10 +4,9 @@ import android.content.Context
 import com.noni.au.app.kotlintodosampleapp.domain.ReminderRepository
 
 class ToDoListManager(val context: Context?) : ReminderRepository {
-
     val mContext = context
 
-    val dbHelper = ToDoListDbHelper(mContext)
+    val mDbHelper = ToDoListDbHelper(mContext)
 
     override fun getReminderById(id: String) {
     }
@@ -16,6 +15,9 @@ class ToDoListManager(val context: Context?) : ReminderRepository {
     }
 
     override fun removeReminder(id: String) {
+    }
+
+    override fun createReminderDb() {
     }
 
 }

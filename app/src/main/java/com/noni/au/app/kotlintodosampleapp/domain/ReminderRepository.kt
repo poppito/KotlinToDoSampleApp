@@ -4,4 +4,5 @@ interface ReminderRepository  {
     fun getReminderById(id : String)
     fun createReminder()
     fun removeReminder(id : String)
+    fun createReminderDb()
 }
