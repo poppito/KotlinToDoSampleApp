@@ -14,7 +14,6 @@ class ToDoListDbHelper(context: Context?) : SQLiteOpenHelper(context,"ToDoListDb
         db?.execSQL(ToDoDbOps.dropDb())
     }
 
-
     companion object ToDoDbOps {
 
         fun createDb() : String {
@@ -25,6 +24,18 @@ class ToDoListDbHelper(context: Context?) : SQLiteOpenHelper(context,"ToDoListDb
 
         fun dropDb() : String {
             return "DROP TABLE IF EXISTS " + ToDoEntryContract.ToDoList.TABLE_NAME
+        }
+
+        fun getTitleColumnName() : String {
+            return ToDoEntryContract.COLUMN_NAME_TITLE
+        }
+
+        fun getContentColumnName() : String {
+            return ToDoEntryContract.COLUMN_NAME_CONTENT
+        }
+
+        fun getToDoListTableName() : String {
+            return ToDoEntryContract.TABLE_NAME
         }
     }
 }
