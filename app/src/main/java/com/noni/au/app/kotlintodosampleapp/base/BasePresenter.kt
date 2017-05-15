@@ -1,6 +1,6 @@
 package com.noni.au.app.kotlintodosampleapp.base
 
-class BasePresenter<V> : Presenter<V> {
+open class BasePresenter<V> : Presenter<V> {
 
     override fun onViewDetached(view : V) {
     }
