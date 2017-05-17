@@ -10,12 +10,24 @@ class CreateReminderActivity : AppCompatActivity(), CreateReminderPresenter.View
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_reminder)
+        setWatchers()
     }
+
+    //region private
+
+    private fun setWatchers() {
+
+    }
+
+    //endregion
+
+    // region lifecycle
 
     override fun onStart() {
         super.onStart()
     }
 
-    override fun createReminder(title: String, content: String?) {
-    }
+    // endregion
+
+    //endregion
 }

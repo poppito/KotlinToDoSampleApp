@@ -12,8 +12,6 @@ class CreateReminderPresenter<ViewSurface>: BasePresenter<ViewSurface>(), Presen
         viewSurface = view
     }
 
-
     interface ViewSurface {
-        fun createReminder(title: String, content: String?)
     }
 }
