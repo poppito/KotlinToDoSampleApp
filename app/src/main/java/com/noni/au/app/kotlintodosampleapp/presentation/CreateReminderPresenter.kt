@@ -10,13 +10,12 @@ class CreateReminderPresenter<ViewSurface> @Inject constructor(repository: Remin
     var viewSurface : ViewSurface? = null
     lateinit var repository: ReminderRepository
 
-    override fun onViewAttached(view: ViewSurface) {
-        super.onViewAttached(view)
+    override fun onStart(view: ViewSurface) {
+        super.onStart(view)
         viewSurface = view
         this.repository = repository
     }
 
     interface ViewSurface {
-
     }
 }

@@ -10,4 +10,5 @@ interface AppComponent {
     fun getAppContext()
     fun getApp() : KotlinSampleToDoApp
     fun getActivityComponent()
+    fun inject(app : KotlinSampleToDoApp)
 }

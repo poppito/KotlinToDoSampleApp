@@ -1,22 +1,26 @@
 package com.noni.au.app.kotlintodosampleapp.view
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import com.noni.au.app.kotlintodosampleapp.R
+import com.noni.au.app.kotlintodosampleapp.base.BaseActivity
 import com.noni.au.app.kotlintodosampleapp.presentation.CreateReminderPresenter
+import com.noni.au.app.kotlintodosampleapp.presentation.CreateReminderPresenter.ViewSurface
 import kotlinx.android.synthetic.main.activity_create_reminder.*
+import javax.inject.Inject
 
-class CreateReminderActivity : AppCompatActivity(), CreateReminderPresenter.ViewSurface, TextWatcher {
-
+class CreateReminderActivity : BaseActivity<CreateReminderPresenter<ViewSurface>, ViewSurface>(), CreateReminderPresenter.ViewSurface, TextWatcher {
     private val TAG = "createreminders"
+
+    @Inject
+    lateinit var presenter: CreateReminderPresenter<ViewSurface>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_reminder)
         setWatchers()
+        presenter.onStart(this)
     }
 
     //region private
@@ -27,6 +31,8 @@ class CreateReminderActivity : AppCompatActivity(), CreateReminderPresenter.View
     }
 
     //endregion
+    override fun inject() {
+    }
 
     // region lifecycle
 
@@ -40,9 +46,7 @@ class CreateReminderActivity : AppCompatActivity(), CreateReminderPresenter.View
 
     override fun afterTextChanged(s: Editable?) {
         if (s?.hashCode() == et_title.text.hashCode()) {
-            Log.v(TAG, "title")
         } else if (s?.hashCode() == et_content.hashCode()) {
-            Log.v(TAG, "content")
         }
     }
 
