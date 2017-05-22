@@ -5,7 +5,7 @@ import dagger.Component
 import javax.inject.Singleton
 
 @Singleton
-@Component
+@Component (modules = arrayOf(AppModule::class))
 interface AppComponent {
     fun getAppContext()
     fun getApp() : KotlinSampleToDoApp

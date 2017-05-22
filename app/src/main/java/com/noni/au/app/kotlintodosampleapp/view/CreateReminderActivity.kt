@@ -16,6 +16,7 @@ class CreateReminderActivity : BaseActivity<CreateReminderPresenter<ViewSurface>
     @Inject
     lateinit var presenter: CreateReminderPresenter<ViewSurface>
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_reminder)

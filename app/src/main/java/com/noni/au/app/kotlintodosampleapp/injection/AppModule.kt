@@ -7,20 +7,19 @@ import dagger.Provides
 import javax.inject.Singleton
 
 @Module
-class AppModule(app : KotlinSampleToDoApp) {
+class AppModule(app: KotlinSampleToDoApp) {
 
-    var mApp : KotlinSampleToDoApp = app
+    var mApp: KotlinSampleToDoApp = app
 
-
-    @Provides
     @Singleton
-    fun getAppContext() : Context {
+    @Provides
+    fun getAppContext(): Context {
         return mApp
     }
 
-    @Provides
     @Singleton
-    fun provideToDoApp() : KotlinSampleToDoApp {
+    @Provides
+    fun provideToDoApp(): KotlinSampleToDoApp {
         return mApp
     }
 }
