@@ -8,20 +8,16 @@ import com.noni.au.app.kotlintodosampleapp.base.BaseActivity
 import com.noni.au.app.kotlintodosampleapp.presentation.CreateReminderPresenter
 import com.noni.au.app.kotlintodosampleapp.presentation.CreateReminderPresenter.ViewSurface
 import kotlinx.android.synthetic.main.activity_create_reminder.*
-import javax.inject.Inject
 
 class CreateReminderActivity : BaseActivity<CreateReminderPresenter<ViewSurface>, ViewSurface>(), CreateReminderPresenter.ViewSurface, TextWatcher {
     private val TAG = "createreminders"
-
-    @Inject
-    lateinit var presenter: CreateReminderPresenter<ViewSurface>
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_reminder)
+        inject()
         setWatchers()
-        presenter.onStart(this)
     }
 
     //region private
@@ -33,6 +29,7 @@ class CreateReminderActivity : BaseActivity<CreateReminderPresenter<ViewSurface>
 
     //endregion
     override fun inject() {
+
     }
 
     // region lifecycle

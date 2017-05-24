@@ -9,7 +9,7 @@ import javax.inject.Singleton
 @Module
 class AppModule(app: KotlinSampleToDoApp) {
 
-    var mApp: KotlinSampleToDoApp = app
+    private var mApp: KotlinSampleToDoApp = app
 
     @Singleton
     @Provides
@@ -21,5 +21,13 @@ class AppModule(app: KotlinSampleToDoApp) {
     @Provides
     fun provideToDoApp(): KotlinSampleToDoApp {
         return mApp
+    }
+
+    @Provides
+    fun providesActivityModule() {
+        return DaggerActivityComponent.builder()
+                .activityModule(ActivityModule())
+                .appModule(mApp)
+                .build()
     }
 }
