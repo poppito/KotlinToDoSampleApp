@@ -12,7 +12,6 @@ import kotlinx.android.synthetic.main.activity_create_reminder.*
 class CreateReminderActivity : BaseActivity<CreateReminderPresenter<ViewSurface>, ViewSurface>(), CreateReminderPresenter.ViewSurface, TextWatcher {
     private val TAG = "createreminders"
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_reminder)
@@ -29,7 +28,6 @@ class CreateReminderActivity : BaseActivity<CreateReminderPresenter<ViewSurface>
 
     //endregion
     override fun inject() {
-
     }
 
     // region lifecycle

@@ -1,25 +1,19 @@
 package com.noni.au.app.kotlintodosampleapp.app
 
 import android.app.Application
-import android.content.Context
 import com.noni.au.app.kotlintodosampleapp.injection.AppComponent
+import com.noni.au.app.kotlintodosampleapp.injection.AppModule
 
 class KotlinSampleToDoApp : Application() {
 
-    private lateinit var mAppComponent : AppComponent
-
-    override fun onCreate() {
-        super.onCreate()
-        mAppComponent = DaggerAppComponent.builder()
-                .appModule()
+    val mAppComponent : AppComponent by lazy {
+        DaggerAppComponent.builder()
+                .appModule(AppModule(this))
                 .build()
     }
 
-    fun getAppContext() : Context {
-        return applicationContext
-    }
-
-    fun getAppComponent(): AppComponent {
-        return mAppComponent
+    override fun onCreate() {
+        super.onCreate()
+        mAppComponent.inject(this)
     }
 }

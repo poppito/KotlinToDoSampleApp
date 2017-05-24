@@ -7,8 +7,5 @@ import javax.inject.Singleton
 @Singleton
 @Component (modules = arrayOf(AppModule::class))
 interface AppComponent {
-    fun getAppContext()
-    fun getApp() : KotlinSampleToDoApp
-    fun getActivityComponent()
     fun inject(app : KotlinSampleToDoApp)
 }

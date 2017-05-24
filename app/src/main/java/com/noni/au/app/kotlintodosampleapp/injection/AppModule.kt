@@ -13,21 +13,13 @@ class AppModule(app: KotlinSampleToDoApp) {
 
     @Singleton
     @Provides
-    fun getAppContext(): Context {
+    fun getAppContext() : Context {
         return mApp
     }
 
     @Singleton
     @Provides
-    fun provideToDoApp(): KotlinSampleToDoApp {
+    fun provideApp() : KotlinSampleToDoApp {
         return mApp
-    }
-
-    @Provides
-    fun providesActivityModule() {
-        return DaggerActivityComponent.builder()
-                .activityModule(ActivityModule())
-                .appModule(mApp)
-                .build()
     }
 }
