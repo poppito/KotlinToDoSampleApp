@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">KotlinToDoSampleApp</string>
+
+
+    <!-- create reminders activity -->
+    <string name="hint_et_title">Title</string>
+    <string name="hint_et_content">Content</string>
+    <string name="btn_submit">Submit</string>
 </resources>
