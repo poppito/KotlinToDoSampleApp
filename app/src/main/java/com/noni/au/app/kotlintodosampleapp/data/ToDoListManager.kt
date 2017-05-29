@@ -2,7 +2,7 @@ package com.noni.au.app.kotlintodosampleapp.data
 
 import android.content.ContentValues
 import android.content.Context
-import com.noni.au.app.kotlintodosampleapp.domain.ReminderRepository
+import com.noni.au.app.kotlintodosampleapp.domain.repositories.ReminderRepository
 
 class ToDoListManager(val context: Context?) : ReminderRepository {
 

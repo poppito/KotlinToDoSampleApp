@@ -16,9 +16,10 @@ import javax.inject.Inject
 class CreateReminderActivity : BaseActivity<CreateReminderPresenter<ViewSurface>, ViewSurface>(), CreateReminderPresenter.ViewSurface, TextWatcher {
     private val TAG = "createreminders"
 
-
     @Inject
     lateinit var presenter: CreateReminderPresenter<ViewSurface>
+    private var titleTextEntered = false
+    private var contentTextEntered = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,17 +27,27 @@ class CreateReminderActivity : BaseActivity<CreateReminderPresenter<ViewSurface>
         inject()
         setWatchers()
         presenter.onStart(this)
+        setListeners()
     }
 
 
     //region private
+
+    private fun setListeners() {
+        btn_submit.setOnClickListener { presenter.onSubmitButtonClick() }
+    }
 
     private fun setWatchers() {
         et_title.addTextChangedListener(this)
         et_content.addTextChangedListener(this)
     }
 
+    private fun enableButton(enable : Boolean) {
+        presenter.driveButtonStateLogic(enable)
+    }
+
     //endregion
+
     private fun inject() {
         DaggerAppComponent.builder()
                 .appModule(AppModule(application as KotlinSampleToDoApp))
@@ -57,8 +68,15 @@ class CreateReminderActivity : BaseActivity<CreateReminderPresenter<ViewSurface>
 
     override fun afterTextChanged(s: Editable?) {
         if (s?.hashCode() == et_title.text.hashCode()) {
+            titleTextEntered = true
         } else if (s?.hashCode() == et_content.hashCode()) {
+            contentTextEntered = true
+        } else if (et_title.text.isEmpty()) {
+            titleTextEntered = false
+        } else if (et_content.text.isEmpty()) {
+            contentTextEntered = false
         }
+        enableButton(titleTextEntered && contentTextEntered)
     }
 
     override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
@@ -70,4 +88,14 @@ class CreateReminderActivity : BaseActivity<CreateReminderPresenter<ViewSurface>
     }
 
     //endregion
+
+    //region viewsurface
+    override fun createReminder(title: String, content: String) {
+    }
+
+    override fun validateInput() {
+    }
+    override fun enableButtonState(enable: Boolean) {
+        btn_submit.isEnabled = enable
+    }
 }
