@@ -13,11 +13,11 @@ import com.noni.au.app.kotlintodosampleapp.presentation.CreateReminderPresenter.
 import kotlinx.android.synthetic.main.activity_create_reminder.*
 import javax.inject.Inject
 
-class CreateReminderActivity : BaseActivity<CreateReminderPresenter<ViewSurface>, ViewSurface>(), CreateReminderPresenter.ViewSurface, TextWatcher {
+class CreateReminderActivity : BaseActivity<CreateReminderPresenter, ViewSurface>(), CreateReminderPresenter.ViewSurface, TextWatcher {
     private val TAG = "createreminders"
 
     @Inject
-    lateinit var presenter: CreateReminderPresenter<ViewSurface>
+    lateinit var presenter: CreateReminderPresenter
     private var titleTextEntered = false
     private var contentTextEntered = false
 
@@ -80,7 +80,7 @@ class CreateReminderActivity : BaseActivity<CreateReminderPresenter<ViewSurface>
     }
 
     override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-        //not required but added by the textwatcher inteface
+        //not required but added by the textwatcher interface
     }
 
     override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
@@ -90,7 +90,7 @@ class CreateReminderActivity : BaseActivity<CreateReminderPresenter<ViewSurface>
     //endregion
 
     //region viewsurface
-    override fun createReminder(title: String, content: String) {
+    override fun createReminder() {
     }
 
     override fun validateInput() {

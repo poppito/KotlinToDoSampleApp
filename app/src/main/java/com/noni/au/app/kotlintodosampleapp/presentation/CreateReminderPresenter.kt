@@ -4,32 +4,31 @@ import com.noni.au.app.kotlintodosampleapp.base.BasePresenter
 import com.noni.au.app.kotlintodosampleapp.domain.facades.CreateReminderFacade
 import javax.inject.Inject
 
-class CreateReminderPresenter<ViewSurface> @Inject constructor(facade: CreateReminderFacade): BasePresenter<ViewSurface>(){
+class CreateReminderPresenter @Inject constructor(facade: CreateReminderFacade) : BasePresenter<CreateReminderPresenter.ViewSurface>() {
 
-    var viewSurface : ViewSurface? = null
+    lateinit private var viewSurface: CreateReminderPresenter.ViewSurface
 
-    override fun onStart(view: ViewSurface) {
+    override fun onStart(view: CreateReminderPresenter.ViewSurface) {
         viewSurface = view
     }
 
-    override fun onStop(view: ViewSurface) {
-
+    override fun onStop(v: ViewSurface) {
     }
 
     //region ui interaction
-    fun createReminder(title: String, content: String) {
-    }
 
     fun onSubmitButtonClick() {
+        viewSurface.createReminder()
     }
 
     fun driveButtonStateLogic(enable: Boolean) {
+        viewSurface.enableButtonState(enable)
     }
 
     //endregion
 
     interface ViewSurface {
-        fun createReminder(title: String, content: String)
+        fun createReminder()
         fun validateInput()
         fun enableButtonState(enable: Boolean)
     }

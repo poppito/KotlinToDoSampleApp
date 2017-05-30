@@ -1,6 +1,6 @@
 package com.noni.au.app.kotlintodosampleapp.domain.facades
 
-class CreateReminderFacade {
+import javax.inject.Inject
 
-
+class CreateReminderFacade @Inject constructor() {
 }
