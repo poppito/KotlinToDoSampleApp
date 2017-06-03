@@ -64,8 +64,8 @@ class CreateReminderActivity : AppCompatActivity(), CreateReminderPresenter.View
     override fun afterTextChanged(s: Editable?) {
         if (s?.hashCode() == et_title.text.hashCode()) {
             if (s.isNotEmpty()) titleTextEntered = true else titleTextEntered = false
-        } else if (s?.hashCode() == et_content.hashCode()) {
-            if (s.isNotEmpty()) contentTextEntered = true else contentTextEntered= false
+        } else if (s?.hashCode() == et_content.text.hashCode()) {
+            if (s.isNotEmpty()) contentTextEntered = true else contentTextEntered = false
         }
         presenter.driveButtonStateLogic(titleTextEntered && contentTextEntered)
     }
