@@ -1,9 +1,7 @@
 package com.noni.au.app.kotlintodosampleapp.base
 
-open class BasePresenter<V> : Presenter<V> {
+open abstract class BasePresenter<T:Any> {
 
-    override fun onStart(v: V) {
-    }
-    override fun onStop(v: V) {
-    }
+    abstract fun onStart(v: T)
+     abstract fun onStop(v: T)
 }

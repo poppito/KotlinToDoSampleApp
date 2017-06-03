@@ -1,4 +1,4 @@
-package com.noni.au.app.kotlintodosampleapp.domain
+package com.noni.au.app.kotlintodosampleapp.domain.repositories
 
 interface ReminderRepository  {
     fun getReminderById(id : String)
