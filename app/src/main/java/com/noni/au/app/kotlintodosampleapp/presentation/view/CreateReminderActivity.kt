@@ -1,4 +1,4 @@
-package com.noni.au.app.kotlintodosampleapp.view
+package com.noni.au.app.kotlintodosampleapp.presentation.view
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
@@ -8,7 +8,7 @@ import com.noni.au.app.kotlintodosampleapp.R
 import com.noni.au.app.kotlintodosampleapp.app.KotlinSampleToDoApp
 import com.noni.au.app.kotlintodosampleapp.injection.AppModule
 import com.noni.au.app.kotlintodosampleapp.injection.DaggerAppComponent
-import com.noni.au.app.kotlintodosampleapp.presentation.CreateReminderPresenter
+import com.noni.au.app.kotlintodosampleapp.presentation.presenters.CreateReminderPresenter
 import kotlinx.android.synthetic.main.activity_create_reminder.*
 import javax.inject.Inject
 

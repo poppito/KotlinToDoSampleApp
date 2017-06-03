@@ -1,6 +1,6 @@
 package com.noni.au.app.kotlintodosampleapp.injection
 
-import com.noni.au.app.kotlintodosampleapp.view.CreateReminderActivity
+import com.noni.au.app.kotlintodosampleapp.presentation.view.CreateReminderActivity
 import dagger.Component
 
 @PerScreen

@@ -1,4 +1,4 @@
-package com.noni.au.app.kotlintodosampleapp.presentation
+package com.noni.au.app.kotlintodosampleapp.presentation.presenters
 
 import com.noni.au.app.kotlintodosampleapp.base.BasePresenter
 import com.noni.au.app.kotlintodosampleapp.domain.facades.CreateReminderFacade
@@ -6,9 +6,9 @@ import javax.inject.Inject
 
 class CreateReminderPresenter @Inject constructor(facade: CreateReminderFacade) : BasePresenter<CreateReminderPresenter.ViewSurface>() {
 
-    lateinit private var viewSurface: CreateReminderPresenter.ViewSurface
+    lateinit private var viewSurface: ViewSurface
 
-    override fun onStart(view: CreateReminderPresenter.ViewSurface) {
+    override fun onStart(view: ViewSurface) {
         viewSurface = view
     }
 
