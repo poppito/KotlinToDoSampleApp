@@ -1,7 +1,7 @@
 package com.noni.au.app.kotlintodosampleapp.presentation.view.fragments
 
-import android.support.v4.app.Fragment
 import android.os.Bundle
+import android.support.v4.app.Fragment
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.LayoutInflater
