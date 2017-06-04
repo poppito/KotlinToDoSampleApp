@@ -11,4 +11,5 @@ interface AppComponent {
     fun getAppContext() : Context
     fun getApp() : KotlinSampleToDoApp
     fun getActivityComponent(): ActivityComponent
+    fun getFragmentComponent() : FragmentComponent
 }

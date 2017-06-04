@@ -1,34 +1,39 @@
-package com.noni.au.app.kotlintodosampleapp.presentation.view
+package com.noni.au.app.kotlintodosampleapp.presentation.view.fragments
 
+import android.support.v4.app.Fragment
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import com.noni.au.app.kotlintodosampleapp.R
 import com.noni.au.app.kotlintodosampleapp.app.KotlinSampleToDoApp
 import com.noni.au.app.kotlintodosampleapp.injection.AppModule
 import com.noni.au.app.kotlintodosampleapp.injection.DaggerAppComponent
 import com.noni.au.app.kotlintodosampleapp.presentation.presenters.CreateReminderPresenter
-import kotlinx.android.synthetic.main.activity_create_reminder.*
+import kotlinx.android.synthetic.main.frag_create_reminder.*
 import javax.inject.Inject
 
-class CreateReminderActivity : AppCompatActivity(), CreateReminderPresenter.ViewSurface, TextWatcher {
-    private val TAG = "createreminders"
+class CreateReminderFragment : Fragment(), CreateReminderPresenter.ViewSurface, TextWatcher {
 
     @Inject
     lateinit var presenter: CreateReminderPresenter
     private var titleTextEntered = false
     private var contentTextEntered = false
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_create_reminder)
+    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        val rootView = inflater?.inflate(R.layout.frag_create_reminder, container, false)
         inject()
-        setWatchers()
         presenter.onStart(this)
-        setListeners()
+        return rootView
     }
 
+    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setWatchers()
+        setListeners()
+    }
 
     //region private
 
@@ -45,9 +50,9 @@ class CreateReminderActivity : AppCompatActivity(), CreateReminderPresenter.View
 
     private fun inject() {
         DaggerAppComponent.builder()
-                .appModule(AppModule(application as KotlinSampleToDoApp))
+                .appModule(AppModule(activity.application as KotlinSampleToDoApp))
                 .build()
-                .getActivityComponent()
+                .getFragmentComponent()
                 .inject(this)
     }
 

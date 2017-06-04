@@ -30,4 +30,12 @@ class AppModule(app: KotlinSampleToDoApp) {
                 .activityModule(ActivityModule())
                 .build()
     }
-}
+
+    @Singleton
+    @Provides
+    fun provideFragmentComponent() : FragmentComponent {
+        return DaggerFragmentComponent.builder()
+                .fragmentModule(FragmentModule())
+                .build()
+    }
+ }

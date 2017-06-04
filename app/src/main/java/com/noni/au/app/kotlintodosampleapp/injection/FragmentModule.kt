@@ -7,9 +7,9 @@ import dagger.Provides
 
 @PerScreen
 @Module (includes = arrayOf(AppModule::class))
-class ActivityModule {
+class FragmentModule {
     @Provides
-    fun getToDoPresenter(facade: CreateReminderFacade) : CreateReminderPresenter {
+    fun getCreateReminderPresenter(facade: CreateReminderFacade) : CreateReminderPresenter {
         return CreateReminderPresenter(facade)
     }
 }
