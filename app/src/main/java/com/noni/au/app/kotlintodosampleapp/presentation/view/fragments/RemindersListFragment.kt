@@ -9,20 +9,17 @@ import com.noni.au.app.kotlintodosampleapp.R
 import com.noni.au.app.kotlintodosampleapp.app.KotlinSampleToDoApp
 import com.noni.au.app.kotlintodosampleapp.injection.AppModule
 import com.noni.au.app.kotlintodosampleapp.injection.DaggerAppComponent
-import com.noni.au.app.kotlintodosampleapp.presentation.presenters.PagerContainerPresenter
-import com.noni.au.app.kotlintodosampleapp.presentation.view.adapters.FragPagerAdapter
-import kotlinx.android.synthetic.main.frag_pager_container.*
+import com.noni.au.app.kotlintodosampleapp.presentation.presenters.RemindersListPresenter
 import javax.inject.Inject
 
-class PagerFragment : Fragment(), PagerContainerPresenter.ViewSurface {
+
+class RemindersListFragment : Fragment(), RemindersListPresenter.ViewSurface {
 
     @Inject
-    lateinit var presenter : PagerContainerPresenter
-
-    private var adapter : FragPagerAdapter? = null
+    lateinit var presenter: RemindersListPresenter
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val rootView = inflater?.inflate(R.layout.frag_pager_container, container, false)
+        val rootView = inflater?.inflate(R.layout.frag_reminders_list, container, false)
         inject()
         presenter.onStart(this)
         return rootView
@@ -34,11 +31,5 @@ class PagerFragment : Fragment(), PagerContainerPresenter.ViewSurface {
                 .build()
                 .getFragmentComponent()
                 .inject(this)
-    }
-
-    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        adapter = FragPagerAdapter(fragmentManager)
-        pager_frags.adapter = adapter
     }
 }
