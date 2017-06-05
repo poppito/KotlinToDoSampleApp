@@ -40,5 +40,6 @@ class PagerFragment : Fragment(), PagerContainerPresenter.ViewSurface {
         super.onViewCreated(view, savedInstanceState)
         adapter = FragPagerAdapter(fragmentManager)
         pager_frags.adapter = adapter
+        pager_dots.setupWithViewPager(pager_frags)
     }
 }
