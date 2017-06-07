@@ -21,6 +21,8 @@ class CreateReminderFragment : Fragment(), CreateReminderPresenter.ViewSurface, 
     lateinit var presenter: CreateReminderPresenter
     private var titleTextEntered = false
     private var contentTextEntered = false
+    private var title = ""
+    private var content = ""
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val rootView = inflater?.inflate(R.layout.frag_create_reminder, container, false)
@@ -38,7 +40,7 @@ class CreateReminderFragment : Fragment(), CreateReminderPresenter.ViewSurface, 
     //region private
 
     private fun setListeners() {
-        btn_submit.setOnClickListener { presenter.onSubmitButtonClick() }
+        btn_submit.setOnClickListener { presenter.onSubmitButtonClick(title, content) }
     }
 
     private fun setWatchers() {
@@ -68,9 +70,23 @@ class CreateReminderFragment : Fragment(), CreateReminderPresenter.ViewSurface, 
 
     override fun afterTextChanged(s: Editable?) {
         if (s?.hashCode() == et_title.text.hashCode()) {
-            if (s.isNotEmpty()) titleTextEntered = true else titleTextEntered = false
+            if (s.isNotEmpty()) {
+                titleTextEntered = true
+                title = et_title.text.toString()
+            }
+            else {
+                titleTextEntered = false
+                title = ""
+            }
         } else if (s?.hashCode() == et_content.text.hashCode()) {
-            if (s.isNotEmpty()) contentTextEntered = true else contentTextEntered = false
+            if (s.isNotEmpty()) {
+                contentTextEntered = true
+                content = et_content.text.toString()
+            }
+            else {
+                contentTextEntered = false
+                content = ""
+            }
         }
         presenter.driveButtonStateLogic(titleTextEntered && contentTextEntered)
     }
@@ -86,8 +102,6 @@ class CreateReminderFragment : Fragment(), CreateReminderPresenter.ViewSurface, 
     //endregion
 
     //region viewsurface
-    override fun createReminder() {
-    }
 
     override fun validateInput() {
     }

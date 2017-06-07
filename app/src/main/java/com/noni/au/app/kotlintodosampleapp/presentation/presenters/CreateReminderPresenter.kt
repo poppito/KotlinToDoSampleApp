@@ -7,9 +7,11 @@ import javax.inject.Inject
 class CreateReminderPresenter @Inject constructor(facade: CreateReminderFacade) : BasePresenter<CreateReminderPresenter.ViewSurface>() {
 
     lateinit private var viewSurface: ViewSurface
+    lateinit private var facade: CreateReminderFacade
 
     override fun onStart(view: ViewSurface) {
         viewSurface = view
+        this.facade = facade
     }
 
     override fun onStop(v: ViewSurface) {
@@ -17,8 +19,8 @@ class CreateReminderPresenter @Inject constructor(facade: CreateReminderFacade) 
 
     //region ui interaction
 
-    fun onSubmitButtonClick() {
-        viewSurface.createReminder()
+    fun onSubmitButtonClick(title:String, content:String) {
+        facade.createAReminder(title, content)
     }
 
     fun driveButtonStateLogic(enable: Boolean) {
@@ -28,7 +30,6 @@ class CreateReminderPresenter @Inject constructor(facade: CreateReminderFacade) 
     //endregion
 
     interface ViewSurface {
-        fun createReminder()
         fun validateInput()
         fun enableButtonState(enable: Boolean)
     }

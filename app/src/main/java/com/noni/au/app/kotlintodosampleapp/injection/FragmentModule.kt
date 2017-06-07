@@ -20,5 +20,7 @@ class FragmentModule {
         return ToDoListManager(context)
     }
     @Provides
-    fun getReminderFacade()
+    fun getReminderFacade(repository: ReminderRepository, context: Context) : CreateReminderFacade {
+        return CreateReminderFacade(repository, context)
+    }
 }
