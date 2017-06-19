@@ -22,20 +22,4 @@ class AppModule(app: KotlinSampleToDoApp) {
     fun provideApp(): KotlinSampleToDoApp {
         return mApp
     }
-
-    @Singleton
-    @Provides
-    fun provideActivityComponent(): ActivityComponent {
-        return DaggerActivityComponent.builder()
-                .activityModule(ActivityModule())
-                .build()
-    }
-
-    @Singleton
-    @Provides
-    fun provideFragmentComponent(): FragmentComponent {
-        return DaggerFragmentComponent.builder()
-                .fragmentModule(FragmentModule())
-                .build()
-    }
 }
