@@ -13,19 +13,19 @@ class AppModule(app: KotlinSampleToDoApp) {
 
     @Singleton
     @Provides
-    fun getAppContext() : Context {
+    fun getAppContext(): Context {
         return mApp
     }
 
     @Singleton
     @Provides
-    fun provideApp() : KotlinSampleToDoApp {
+    fun provideApp(): KotlinSampleToDoApp {
         return mApp
     }
 
     @Singleton
     @Provides
-    fun provideActivityComponent() : ActivityComponent {
+    fun provideActivityComponent(): ActivityComponent {
         return DaggerActivityComponent.builder()
                 .activityModule(ActivityModule())
                 .build()
@@ -33,9 +33,9 @@ class AppModule(app: KotlinSampleToDoApp) {
 
     @Singleton
     @Provides
-    fun provideFragmentComponent() : FragmentComponent {
+    fun provideFragmentComponent(): FragmentComponent {
         return DaggerFragmentComponent.builder()
                 .fragmentModule(FragmentModule())
                 .build()
     }
- }
+}
