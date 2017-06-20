@@ -1,6 +1,7 @@
 package com.noni.au.app.kotlintodosampleapp.injection
 
 import android.app.Activity
+import android.content.Context
 import dagger.Module
 import dagger.Provides
 
@@ -9,8 +10,6 @@ import dagger.Provides
 class ActivityModule(private val activity: Activity) {
 
     @Provides
-    fun getContext() = activity
+    fun getContext(): Context = activity
 
-    @Provides
-    fun getActivity() = activity
 }

@@ -14,9 +14,7 @@ class KotlinSampleToDoApp : Application() {
         mAppComponent = DaggerAppComponent.builder()
                 .appModule(AppModule(this))
                 .build()
-    }
 
-    fun provideAppComponent() : AppComponent {
-        return mAppComponent
+        mAppComponent.inject(this)
     }
 }

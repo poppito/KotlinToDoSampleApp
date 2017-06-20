@@ -6,7 +6,7 @@ import com.noni.au.app.kotlintodosampleapp.presentation.view.fragments.Reminders
 import dagger.Component
 
 @PerScreen
-@Component (modules = arrayOf(FragmentModule::class))
+@Component (dependencies = arrayOf(AppComponent::class), modules = arrayOf(FragmentModule::class))
 interface FragmentComponent {
     fun inject(fragment: CreateReminderFragment)
     fun inject(fragment: PagerFragment)

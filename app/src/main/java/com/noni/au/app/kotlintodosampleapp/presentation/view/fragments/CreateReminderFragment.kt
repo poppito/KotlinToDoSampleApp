@@ -9,8 +9,8 @@ import android.view.View
 import android.view.ViewGroup
 import com.noni.au.app.kotlintodosampleapp.R
 import com.noni.au.app.kotlintodosampleapp.app.KotlinSampleToDoApp
-import com.noni.au.app.kotlintodosampleapp.injection.AppModule
-import com.noni.au.app.kotlintodosampleapp.injection.DaggerAppComponent
+import com.noni.au.app.kotlintodosampleapp.injection.DaggerFragmentComponent
+import com.noni.au.app.kotlintodosampleapp.injection.FragmentModule
 import com.noni.au.app.kotlintodosampleapp.presentation.presenters.CreateReminderPresenter
 import kotlinx.android.synthetic.main.frag_create_reminder.*
 import javax.inject.Inject
@@ -51,10 +51,11 @@ class CreateReminderFragment : Fragment(), CreateReminderPresenter.ViewSurface, 
     //endregion
 
     private fun inject() {
-        DaggerAppComponent.builder()
-                .appModule(AppModule(activity.application as KotlinSampleToDoApp))
+        val app = activity.application as KotlinSampleToDoApp
+        DaggerFragmentComponent.builder()
+                .appComponent(app.mAppComponent)
+                .fragmentModule(FragmentModule(this))
                 .build()
-                .getFragmentComponent()
                 .inject(this)
     }
 
@@ -73,8 +74,7 @@ class CreateReminderFragment : Fragment(), CreateReminderPresenter.ViewSurface, 
             if (s.isNotEmpty()) {
                 titleTextEntered = true
                 title = et_title.text.toString()
-            }
-            else {
+            } else {
                 titleTextEntered = false
                 title = ""
             }
@@ -82,8 +82,7 @@ class CreateReminderFragment : Fragment(), CreateReminderPresenter.ViewSurface, 
             if (s.isNotEmpty()) {
                 contentTextEntered = true
                 content = et_content.text.toString()
-            }
-            else {
+            } else {
                 contentTextEntered = false
                 content = ""
             }

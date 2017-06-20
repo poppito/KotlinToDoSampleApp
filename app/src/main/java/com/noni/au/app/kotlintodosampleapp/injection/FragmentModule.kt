@@ -1,7 +1,7 @@
 package com.noni.au.app.kotlintodosampleapp.injection
 
-import android.app.Fragment
 import android.content.Context
+import android.support.v4.app.Fragment
 import com.noni.au.app.kotlintodosampleapp.data.ToDoListManager
 import com.noni.au.app.kotlintodosampleapp.domain.facades.CreateReminderFacade
 import com.noni.au.app.kotlintodosampleapp.domain.repositories.ReminderRepository
@@ -28,5 +28,5 @@ class FragmentModule(private val fragment: Fragment) {
     }
 
     @Provides
-    fun getContext() = fragment.context
+    fun getContext(): Context = fragment.activity
 }

@@ -1,25 +1,8 @@
 package com.noni.au.app.kotlintodosampleapp.injection
 
-import android.content.Context
-import com.noni.au.app.kotlintodosampleapp.app.KotlinSampleToDoApp
+import android.app.Application
 import dagger.Module
-import dagger.Provides
-import javax.inject.Singleton
 
 @Module
-class AppModule(app: KotlinSampleToDoApp) {
-
-    private var mApp: KotlinSampleToDoApp = app
-
-    @Singleton
-    @Provides
-    fun getAppContext(): Context {
-        return mApp
-    }
-
-    @Singleton
-    @Provides
-    fun provideApp(): KotlinSampleToDoApp {
-        return mApp
-    }
+class AppModule(private val app: Application) {
 }

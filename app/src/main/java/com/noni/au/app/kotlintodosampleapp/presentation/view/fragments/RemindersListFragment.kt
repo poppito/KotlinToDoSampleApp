@@ -7,8 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import com.noni.au.app.kotlintodosampleapp.R
 import com.noni.au.app.kotlintodosampleapp.app.KotlinSampleToDoApp
-import com.noni.au.app.kotlintodosampleapp.injection.AppModule
-import com.noni.au.app.kotlintodosampleapp.injection.DaggerAppComponent
+import com.noni.au.app.kotlintodosampleapp.injection.DaggerFragmentComponent
+import com.noni.au.app.kotlintodosampleapp.injection.FragmentModule
 import com.noni.au.app.kotlintodosampleapp.presentation.presenters.RemindersListPresenter
 import javax.inject.Inject
 
@@ -26,10 +26,11 @@ class RemindersListFragment : Fragment(), RemindersListPresenter.ViewSurface {
     }
 
     private fun inject() {
-        DaggerAppComponent.builder()
-                .appModule(AppModule(activity.application as KotlinSampleToDoApp))
+        val app = activity.application as KotlinSampleToDoApp
+        DaggerFragmentComponent.builder()
+                .appComponent(app.mAppComponent)
+                .fragmentModule(FragmentModule(this))
                 .build()
-                .getFragmentComponent()
                 .inject(this)
     }
 }
