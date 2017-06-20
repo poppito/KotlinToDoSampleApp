@@ -3,8 +3,9 @@ package com.noni.au.app.kotlintodosampleapp.data
 import android.content.ContentValues
 import android.content.Context
 import com.noni.au.app.kotlintodosampleapp.domain.repositories.ReminderRepository
+import javax.inject.Inject
 
-class ToDoListManager(val context: Context?) : ReminderRepository {
+class ToDoListManager @Inject constructor(val context: Context?) : ReminderRepository {
 
     val mContext = context
 

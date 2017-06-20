@@ -24,10 +24,14 @@ class CreateReminderFragment : Fragment(), CreateReminderPresenter.ViewSurface, 
     private var title = ""
     private var content = ""
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val rootView = inflater?.inflate(R.layout.frag_create_reminder, container, false)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         inject()
         presenter.onStart(this)
+    }
+
+    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        val rootView = inflater?.inflate(R.layout.frag_create_reminder, container, false)
         return rootView
     }
 

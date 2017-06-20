@@ -23,8 +23,8 @@ class FragmentModule(private val fragment: Fragment) {
     }
 
     @Provides
-    fun getReminderFacade(repository: ReminderRepository, context: Context): CreateReminderFacade {
-        return CreateReminderFacade(repository, context)
+    fun getReminderFacade(repository: ReminderRepository): CreateReminderFacade {
+        return CreateReminderFacade(repository)
     }
 
     @Provides
