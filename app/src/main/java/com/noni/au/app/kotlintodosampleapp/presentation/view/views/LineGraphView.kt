@@ -91,11 +91,11 @@ class LineGraphView(context: Context, attrs: AttributeSet) : LinearLayout(contex
         values.forEach {
             item ->
             var currentItem = item
-            currentY = normalizeYValue(yIncrement, currentItem, prevItem)
-            var stopY = yIncrement * item
+            var stopY = normalizeYValue(yIncrement, currentItem, prevItem)
             var stopX = currentX + xIncrement
             lines += Line(currentX, currentY, stopX, stopY, item)
             currentX = stopX
+            currentY = stopY
             prevItem = item
         }
 
@@ -104,13 +104,7 @@ class LineGraphView(context: Context, attrs: AttributeSet) : LinearLayout(contex
 
 
     private fun normalizeYValue(increment: Float, currentVal: Float, prevVal: Float): Float{
-        if (currentVal > prevVal) {
-            return increment * (currentVal - prevVal)
-        } else if (currentVal < prevVal) {
-            return increment * (prevVal - currentVal)
-        } else {
-            return increment
-        }
+        return increment * (currentVal - prevVal)
     }
 
     //endregion
