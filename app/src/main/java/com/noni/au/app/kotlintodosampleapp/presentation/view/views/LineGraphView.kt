@@ -15,6 +15,8 @@ class LineGraphView(context: Context, attrs: AttributeSet) : LinearLayout(contex
     private var bgColour = context.resources.getColor(android.R.color.white)
     private var strokeWidth = context.resources.getDimension(R.dimen.strokeWidth)
 
+    private val TOP_OFFSET = 50f
+
     //stub data
     private val values = listOf(1.3f, 1.8f, 1.1f, 0.9f)
     private val textOffset = 15f
@@ -77,34 +79,25 @@ class LineGraphView(context: Context, attrs: AttributeSet) : LinearLayout(contex
     }
 
     private fun calculateYIncrements(layout: LinearLayout, max: Float) : Float {
-        return layout.height.div(max)
+        return (layout.height.toFloat() - TOP_OFFSET).div(max)
     }
 
     private fun calculateLines(layout: LinearLayout): List<Line> {
         var lines = emptyList<Line>()
         var currentX = 0f
-        var currentY = layout.bottom.toFloat()
         val xIncrement = calculateXIncrements(layout, values.count())
         val yIncrement = calculateYIncrements(layout, values.max()!!)
-        var prevItem = 0f
+        val currentY = layout.bottom.toFloat()
 
         values.forEach {
             item ->
-            var currentItem = item
-            var stopY = normalizeYValue(yIncrement, currentItem, prevItem)
-            var stopX = currentX + xIncrement
+            var stopX = xIncrement * item
+            var stopY = layout.bottom.toFloat() - (item * yIncrement)
             lines += Line(currentX, currentY, stopX, stopY, item)
-            currentX = stopX
-            currentY = stopY
-            prevItem = item
+            currentX += stopX
         }
 
         return lines
-    }
-
-
-    private fun normalizeYValue(increment: Float, currentVal: Float, prevVal: Float): Float{
-        return increment * (currentVal - prevVal)
     }
 
     //endregion
