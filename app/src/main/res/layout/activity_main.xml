@@ -4,10 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".presentation.view.activities.MainActivity">
+
+    <com.noni.au.app.kotlintodosampleapp.presentation.view.views.LineGraphView
+        android:layout_width="match_parent"
+        app:strokeWidth="2dp"
+        app:bgColour="@android:color/white"
+        android:layout_height="150dp">
+    </com.noni.au.app.kotlintodosampleapp.presentation.view.views.LineGraphView>
+
     <fragment
-        android:name="com.noni.au.app.kotlintodosampleapp.presentation.view.fragments.PagerFragment"
         android:id="@+id/frag_pager_container"
+        android:name="com.noni.au.app.kotlintodosampleapp.presentation.view.fragments.PagerFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
     </fragment>

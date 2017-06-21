@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="LineGraphView">
+        <attr name="strokeWidth" format="dimension"></attr>
+        <attr name="bgColour" format="color"></attr>
+    </declare-styleable>
+</resources>

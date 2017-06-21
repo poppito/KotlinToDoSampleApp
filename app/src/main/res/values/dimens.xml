@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--Line graph view -->
+    <dimen name="strokeWidth">2dp</dimen>
+    <dimen name="textsize">15sp</dimen>
+</resources>
