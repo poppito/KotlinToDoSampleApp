@@ -87,18 +87,19 @@ class LineGraphView(context: Context, attrs: AttributeSet) : LinearLayout(contex
         var currentX = 0f
         val xIncrement = calculateXIncrements(layout, values.count())
         val yIncrement = calculateYIncrements(layout, values.max()!!)
-        val currentY = layout.bottom.toFloat()
+        var currentY = layout.bottom.toFloat()
 
         values.forEach {
             item ->
-            var stopX = xIncrement * item
             var stopY = layout.bottom.toFloat() - (item * yIncrement)
-            lines += Line(currentX, currentY, stopX, stopY, item)
-            currentX += stopX
+            lines += Line(currentX, currentY, currentX+xIncrement, stopY, item)
+            currentX += xIncrement
+            currentY = stopY
         }
 
         return lines
     }
+
 
     //endregion
 
