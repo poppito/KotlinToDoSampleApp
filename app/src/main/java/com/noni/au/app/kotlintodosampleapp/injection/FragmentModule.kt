@@ -2,7 +2,7 @@ package com.noni.au.app.kotlintodosampleapp.injection
 
 import android.content.Context
 import android.support.v4.app.Fragment
-import com.noni.au.app.kotlintodosampleapp.data.ToDoListManager
+import com.noni.au.app.kotlintodosampleapp.data.CreateReminderManager
 import com.noni.au.app.kotlintodosampleapp.domain.facades.CreateReminderFacade
 import com.noni.au.app.kotlintodosampleapp.domain.repositories.ReminderRepository
 import com.noni.au.app.kotlintodosampleapp.presentation.presenters.CreateReminderPresenter
@@ -19,7 +19,7 @@ class FragmentModule(private val fragment: Fragment) {
 
     @Provides
     fun getReminderRepository(context: Context): ReminderRepository {
-        return ToDoListManager(context)
+        return CreateReminderManager(context)
     }
 
     @Provides
