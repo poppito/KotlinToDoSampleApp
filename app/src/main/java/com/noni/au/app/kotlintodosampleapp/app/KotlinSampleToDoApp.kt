@@ -1,6 +1,8 @@
 package com.noni.au.app.kotlintodosampleapp.app
 
 import android.app.Application
+import android.arch.persistence.room.Room
+import com.noni.au.app.kotlintodosampleapp.data.ToDoDb
 import com.noni.au.app.kotlintodosampleapp.injection.AppComponent
 import com.noni.au.app.kotlintodosampleapp.injection.AppModule
 import com.noni.au.app.kotlintodosampleapp.injection.DaggerAppComponent
@@ -8,6 +10,7 @@ import com.noni.au.app.kotlintodosampleapp.injection.DaggerAppComponent
 class KotlinSampleToDoApp : Application() {
 
     lateinit var mAppComponent: AppComponent
+    lateinit var mDb: ToDoDb
 
     override fun onCreate() {
         super.onCreate()
@@ -16,5 +19,7 @@ class KotlinSampleToDoApp : Application() {
                 .build()
 
         mAppComponent.inject(this)
+
+        mDb = Room.databaseBuilder(applicationContext, ToDoDb::class.java, "database-name").build()
     }
 }
