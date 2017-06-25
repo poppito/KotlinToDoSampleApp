@@ -2,10 +2,10 @@ package com.noni.au.app.kotlintodosampleapp.injection
 
 import android.content.Context
 import android.support.v4.app.Fragment
-import com.noni.au.app.kotlintodosampleapp.data.CreateReminderManager
-import com.noni.au.app.kotlintodosampleapp.domain.facades.CreateReminderFacade
+import com.noni.au.app.kotlintodosampleapp.data.ToDoItemManager
+import com.noni.au.app.kotlintodosampleapp.domain.facades.CreateToDoItemFacade
 import com.noni.au.app.kotlintodosampleapp.domain.repositories.ReminderRepository
-import com.noni.au.app.kotlintodosampleapp.presentation.presenters.CreateReminderPresenter
+import com.noni.au.app.kotlintodosampleapp.presentation.presenters.CreateToDoItemPresenter
 import dagger.Module
 import dagger.Provides
 
@@ -13,18 +13,18 @@ import dagger.Provides
 @Module(includes = arrayOf(AppModule::class))
 class FragmentModule(private val fragment: Fragment) {
     @Provides
-    fun getCreateReminderPresenter(facade: CreateReminderFacade): CreateReminderPresenter {
-        return CreateReminderPresenter(facade)
+    fun getCreateReminderPresenter(facade: CreateToDoItemFacade): CreateToDoItemPresenter {
+        return CreateToDoItemPresenter(facade)
     }
 
     @Provides
     fun getReminderRepository(context: Context): ReminderRepository {
-        return CreateReminderManager(context)
+        return ToDoItemManager(context)
     }
 
     @Provides
-    fun getReminderFacade(repository: ReminderRepository): CreateReminderFacade {
-        return CreateReminderFacade(repository)
+    fun getReminderFacade(repository: ReminderRepository): CreateToDoItemFacade {
+        return CreateToDoItemFacade(repository)
     }
 
     @Provides

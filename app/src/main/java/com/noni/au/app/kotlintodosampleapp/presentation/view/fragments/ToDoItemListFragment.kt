@@ -13,7 +13,7 @@ import com.noni.au.app.kotlintodosampleapp.presentation.presenters.RemindersList
 import javax.inject.Inject
 
 
-class RemindersListFragment : Fragment(), RemindersListPresenter.ViewSurface {
+class ToDoItemListFragment : Fragment(), RemindersListPresenter.ViewSurface {
 
     @Inject
     lateinit var presenter: RemindersListPresenter

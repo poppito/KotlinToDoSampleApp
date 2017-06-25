@@ -1,10 +1,10 @@
 package com.noni.au.app.kotlintodosampleapp.presentation.presenters
 
 import com.noni.au.app.kotlintodosampleapp.base.BasePresenter
-import com.noni.au.app.kotlintodosampleapp.domain.facades.CreateReminderFacade
+import com.noni.au.app.kotlintodosampleapp.domain.facades.CreateToDoItemFacade
 import javax.inject.Inject
 
-class CreateReminderPresenter @Inject constructor(private val facade: CreateReminderFacade) : BasePresenter<CreateReminderPresenter.ViewSurface>() {
+class CreateToDoItemPresenter @Inject constructor(private val facade: CreateToDoItemFacade) : BasePresenter<CreateToDoItemPresenter.ViewSurface>() {
 
     lateinit private var viewSurface: ViewSurface
 

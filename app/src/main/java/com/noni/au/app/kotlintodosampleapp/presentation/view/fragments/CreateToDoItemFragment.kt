@@ -11,14 +11,14 @@ import com.noni.au.app.kotlintodosampleapp.R
 import com.noni.au.app.kotlintodosampleapp.app.KotlinSampleToDoApp
 import com.noni.au.app.kotlintodosampleapp.injection.DaggerFragmentComponent
 import com.noni.au.app.kotlintodosampleapp.injection.FragmentModule
-import com.noni.au.app.kotlintodosampleapp.presentation.presenters.CreateReminderPresenter
+import com.noni.au.app.kotlintodosampleapp.presentation.presenters.CreateToDoItemPresenter
 import kotlinx.android.synthetic.main.frag_create_reminder.*
 import javax.inject.Inject
 
-class CreateReminderFragment : Fragment(), CreateReminderPresenter.ViewSurface, TextWatcher {
+class CreateToDoItemFragment : Fragment(), CreateToDoItemPresenter.ViewSurface, TextWatcher {
 
     @Inject
-    lateinit var presenter: CreateReminderPresenter
+    lateinit var presenter: CreateToDoItemPresenter
     private var titleTextEntered = false
     private var contentTextEntered = false
     private var title = ""
