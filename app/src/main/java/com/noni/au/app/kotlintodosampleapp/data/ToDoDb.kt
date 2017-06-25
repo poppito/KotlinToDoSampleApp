@@ -12,5 +12,5 @@ import android.arch.persistence.room.RoomDatabase
  */
 @Database(entities = arrayOf(ToDoItem::class), version = 1 )
 abstract class ToDoDb : RoomDatabase() {
-    abstract fun toDoItem() : ToDoItem
+    abstract fun toDoDao() : ToDoDao
 }

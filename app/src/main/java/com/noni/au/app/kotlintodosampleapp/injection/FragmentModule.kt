@@ -4,7 +4,7 @@ import android.content.Context
 import android.support.v4.app.Fragment
 import com.noni.au.app.kotlintodosampleapp.data.ToDoItemManager
 import com.noni.au.app.kotlintodosampleapp.domain.facades.CreateToDoItemFacade
-import com.noni.au.app.kotlintodosampleapp.domain.repositories.ReminderRepository
+import com.noni.au.app.kotlintodosampleapp.domain.repositories.ToDoItemRepository
 import com.noni.au.app.kotlintodosampleapp.presentation.presenters.CreateToDoItemPresenter
 import dagger.Module
 import dagger.Provides
@@ -18,12 +18,12 @@ class FragmentModule(private val fragment: Fragment) {
     }
 
     @Provides
-    fun getReminderRepository(context: Context): ReminderRepository {
+    fun getReminderRepository(context: Context): ToDoItemRepository {
         return ToDoItemManager(context)
     }
 
     @Provides
-    fun getReminderFacade(repository: ReminderRepository): CreateToDoItemFacade {
+    fun getReminderFacade(repository: ToDoItemRepository): CreateToDoItemFacade {
         return CreateToDoItemFacade(repository)
     }
 
