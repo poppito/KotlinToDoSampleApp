@@ -1,13 +1,12 @@
 package com.noni.au.app.kotlintodosampleapp.data
 
-import android.content.Context
 import com.noni.au.app.kotlintodosampleapp.domain.repositories.ToDoItemRepository
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
-class ToDoItemManager @Inject constructor(val context: Context?, private val db: ToDoDb) : ToDoItemRepository {
+class ToDoItemManager @Inject constructor(private val db: ToDoDb) : ToDoItemRepository {
     override fun getAllReminders(): Single<List<ToDoItem>> {
         return Single.fromCallable {
             db.toDoDao().getAllToDos()
