@@ -2,6 +2,7 @@ package com.noni.au.app.kotlintodosampleapp.injection
 
 import android.content.Context
 import android.support.v4.app.Fragment
+import com.noni.au.app.kotlintodosampleapp.app.KotlinSampleToDoApp
 import com.noni.au.app.kotlintodosampleapp.data.ToDoDb
 import com.noni.au.app.kotlintodosampleapp.data.ToDoItemManager
 import com.noni.au.app.kotlintodosampleapp.domain.facades.CreateToDoItemFacade
@@ -30,4 +31,10 @@ class FragmentModule(private val fragment: Fragment) {
 
     @Provides
     fun getContext(): Context = fragment.activity
+
+    @Provides
+    fun getDb() : ToDoDb {
+        val app = fragment.activity.application as KotlinSampleToDoApp
+        return app.mDb
+    }
 }
