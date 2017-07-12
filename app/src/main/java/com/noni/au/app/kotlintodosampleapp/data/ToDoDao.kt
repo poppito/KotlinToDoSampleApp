@@ -18,8 +18,8 @@ interface ToDoDao {
     fun deleteItem(item: ToDoItem)
 
     @Query("SELECT * from ToDoDb where title LIKE :title")
-    fun getItemByTitle(title: String) : ToDoItem
+    fun getItemByTitle(title: String): ToDoItem
 
     @Query("SELECT * from ToDoDb")
-    fun getAllToDos() : List<ToDoItem>
+    fun getAllToDos(): List<ToDoItem>
 }
