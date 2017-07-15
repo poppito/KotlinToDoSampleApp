@@ -1,7 +1,7 @@
 package com.noni.au.app.kotlintodosampleapp.presentation.presenters
 
-import android.util.Log
 import com.noni.au.app.kotlintodosampleapp.base.BasePresenter
+import com.noni.au.app.kotlintodosampleapp.data.ToDoItem
 import com.noni.au.app.kotlintodosampleapp.domain.facades.CreateToDoItemFacade
 import io.reactivex.disposables.Disposable
 import javax.inject.Inject
@@ -20,11 +20,14 @@ class RemindersListPresenter @Inject constructor(private val facade: CreateToDoI
     //region private
 
     private fun getAllReminders() {
+        view.showLoader(true)
         getAllToDosDisposable = facade.getAllItems()
+                .doFinally { view.showLoader(false) }
                 .subscribe(
                         { items ->
-                            items.forEach { item ->
-                                Log.v("bleh", item.title)
+                            if (items.isNotEmpty()) {
+                                view.showReminders(true)
+                                view.renderReminders(items)
                             }
                         },
                         {
@@ -36,7 +39,12 @@ class RemindersListPresenter @Inject constructor(private val facade: CreateToDoI
     //endregion
 
     override fun onStop(v: ViewSurface) {
+        getAllToDosDisposable?.dispose()
     }
 
-    interface ViewSurface
+    interface ViewSurface {
+        fun showLoader(show: Boolean)
+        fun showReminders(show: Boolean)
+        fun renderReminders(items: List<ToDoItem>)
+    }
 }

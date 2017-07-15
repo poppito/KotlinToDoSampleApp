@@ -1,28 +1,36 @@
 package com.noni.au.app.kotlintodosampleapp.presentation.view.adapters
 
 import android.support.v7.widget.RecyclerView
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.noni.au.app.kotlintodosampleapp.R
+import com.noni.au.app.kotlintodosampleapp.data.ToDoItem
+import kotlinx.android.synthetic.main.list_todo_item.view.*
 
 
-class ToDoListRecyclerAdapter : RecyclerView.Adapter<ToDoListRecyclerAdapter.ToDoItemViewHolder>() {
+class ToDoListRecyclerAdapter(private val items: List<ToDoItem>) : RecyclerView.Adapter<ToDoListRecyclerAdapter.ToDoItemViewHolder>() {
 
-    inner class ToDoItemViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-
+    inner class ToDoItemViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
+        fun bind(item: ToDoItem) {
+            view.txt_title.text = item.title
+            view.txt_content.text = item.content
+        }
     }
 
     //region lifecycle
 
     override fun onBindViewHolder(holder: ToDoItemViewHolder?, position: Int) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        (holder as ToDoItemViewHolder).bind(items[position])
     }
 
     override fun getItemCount(): Int {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return items.count()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ToDoItemViewHolder {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        val view = LayoutInflater.from(parent?.context).inflate(R.layout.list_todo_item, parent, false)
+        return ToDoItemViewHolder(view)
     }
 
 

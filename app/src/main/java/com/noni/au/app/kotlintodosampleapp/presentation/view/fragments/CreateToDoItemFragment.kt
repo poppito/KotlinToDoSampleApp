@@ -15,7 +15,7 @@ import com.noni.au.app.kotlintodosampleapp.presentation.presenters.CreateToDoIte
 import kotlinx.android.synthetic.main.frag_create_reminder.*
 import javax.inject.Inject
 
-class CreateToDoItemFragment : Fragment(), CreateToDoItemPresenter.ViewSurface, TextWatcher {
+class CreateToDoItemFragment : Fragment(), CreateToDoItemPresenter.ViewSurface, TextWatcher, RefreshableFragment {
 
     @Inject
     lateinit var presenter: CreateToDoItemPresenter
@@ -112,4 +112,15 @@ class CreateToDoItemFragment : Fragment(), CreateToDoItemPresenter.ViewSurface, 
     override fun enableButtonState(enable: Boolean) {
         btn_submit.isEnabled = enable
     }
+
+    //endregion
+
+
+    //region refreshablefragment
+
+    override fun refresh() {
+
+    }
+
+    //endregion
 }
