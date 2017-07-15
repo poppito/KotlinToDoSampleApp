@@ -20,6 +20,6 @@ class KotlinSampleToDoApp : Application() {
 
         mAppComponent.inject(this)
 
-        mDb = Room.databaseBuilder(applicationContext, ToDoDb::class.java, "database-name").build()
+        mDb = Room.databaseBuilder(applicationContext, ToDoDb::class.java, "ToDoDb").build()
     }
 }

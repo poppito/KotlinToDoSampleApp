@@ -1,5 +1,6 @@
 package com.noni.au.app.kotlintodosampleapp.data
 
+import android.arch.persistence.room.Dao
 import android.arch.persistence.room.Delete
 import android.arch.persistence.room.Insert
 import android.arch.persistence.room.Query
@@ -9,6 +10,7 @@ import android.arch.persistence.room.Query
  * the ToDoList table.
  * @author harshoverseer on 25/6/17.
  */
+@Dao
 interface ToDoDao {
 
     @Insert
@@ -17,9 +19,6 @@ interface ToDoDao {
     @Delete
     fun deleteItem(item: ToDoItem)
 
-    @Query("SELECT * from ToDoDb where title LIKE :title")
-    fun getItemByTitle(title: String): ToDoItem
-
-    @Query("SELECT * from ToDoDb")
+    @Query("SELECT * from todoitems")
     fun getAllToDos(): List<ToDoItem>
 }
