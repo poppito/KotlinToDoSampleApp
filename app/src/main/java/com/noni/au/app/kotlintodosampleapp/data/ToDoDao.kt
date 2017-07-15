@@ -19,6 +19,9 @@ interface ToDoDao {
     @Delete
     fun deleteItem(item: ToDoItem)
 
+    @Query("SELECT * from todoitems WHERE title LIKE :p0 and content LIKE :p1")
+    fun getItemByTitle(title: String, content: String = ""): List<ToDoItem>
+
     @Query("SELECT * from todoitems")
     fun getAllToDos(): List<ToDoItem>
 }
