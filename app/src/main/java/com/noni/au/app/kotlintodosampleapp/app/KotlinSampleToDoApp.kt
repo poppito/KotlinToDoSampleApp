@@ -1,7 +1,7 @@
 package com.noni.au.app.kotlintodosampleapp.app
 
 import android.app.Application
-import android.arch.persistence.room.Room
+import androidx.room.Room
 import com.noni.au.app.kotlintodosampleapp.data.ToDoDb
 import com.noni.au.app.kotlintodosampleapp.injection.AppComponent
 import com.noni.au.app.kotlintodosampleapp.injection.AppModule

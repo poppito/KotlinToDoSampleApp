@@ -1,12 +1,12 @@
 package com.noni.au.app.kotlintodosampleapp.presentation.view.fragments
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import com.noni.au.app.kotlintodosampleapp.R
 import com.noni.au.app.kotlintodosampleapp.app.KotlinSampleToDoApp
 import com.noni.au.app.kotlintodosampleapp.injection.DaggerFragmentComponent
@@ -30,12 +30,12 @@ class CreateToDoItemFragment : Fragment(), CreateToDoItemPresenter.ViewSurface, 
         presenter.onStart(this)
     }
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val rootView = inflater?.inflate(R.layout.frag_create_reminder, container, false)
         return rootView
     }
 
-    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setWatchers()
         setListeners()
@@ -55,7 +55,7 @@ class CreateToDoItemFragment : Fragment(), CreateToDoItemPresenter.ViewSurface, 
     //endregion
 
     private fun inject() {
-        val app = activity.application as KotlinSampleToDoApp
+        val app = activity?.application as KotlinSampleToDoApp
         DaggerFragmentComponent.builder()
                 .appComponent(app.mAppComponent)
                 .fragmentModule(FragmentModule(this))

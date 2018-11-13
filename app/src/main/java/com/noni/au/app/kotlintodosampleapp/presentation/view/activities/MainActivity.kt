@@ -1,7 +1,7 @@
 package com.noni.au.app.kotlintodosampleapp.presentation.view.activities
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import com.noni.au.app.kotlintodosampleapp.R
 import com.noni.au.app.kotlintodosampleapp.app.KotlinSampleToDoApp
 import com.noni.au.app.kotlintodosampleapp.injection.ActivityModule

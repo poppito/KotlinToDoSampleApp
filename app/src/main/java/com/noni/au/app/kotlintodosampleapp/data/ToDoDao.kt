@@ -1,9 +1,10 @@
 package com.noni.au.app.kotlintodosampleapp.data
 
-import android.arch.persistence.room.Dao
-import android.arch.persistence.room.Delete
-import android.arch.persistence.room.Insert
-import android.arch.persistence.room.Query
+import androidx.room.Dao
+import androidx.room.Delete
+import androidx.room.Insert
+import androidx.room.Query
+
 
 /**
  * The data access object for
@@ -19,7 +20,7 @@ interface ToDoDao {
     @Delete
     fun deleteItem(item: ToDoItem)
 
-    @Query("SELECT * from todoitems WHERE title LIKE :p0 and content LIKE :p1")
+    @Query("SELECT * from todoitems WHERE title LIKE :title and content LIKE :content")
     fun getItemByTitle(title: String, content: String = ""): List<ToDoItem>
 
     @Query("SELECT * from todoitems")

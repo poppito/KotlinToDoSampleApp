@@ -1,11 +1,10 @@
 package com.noni.au.app.kotlintodosampleapp.presentation.view.fragments
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import com.noni.au.app.kotlintodosampleapp.R
 import com.noni.au.app.kotlintodosampleapp.app.KotlinSampleToDoApp
 import com.noni.au.app.kotlintodosampleapp.data.ToDoItem
@@ -22,13 +21,13 @@ class ToDoItemListFragment : Fragment(), RemindersListPresenter.ViewSurface {
     @Inject
     lateinit var presenter: RemindersListPresenter
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val rootView = inflater?.inflate(R.layout.frag_reminders_list, container, false)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        val rootView = inflater.inflate(R.layout.frag_reminders_list, container, false)
         inject()
         return rootView
     }
 
-    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         presenter.onStart(this)
         initialiseRecyclerView()
@@ -37,7 +36,7 @@ class ToDoItemListFragment : Fragment(), RemindersListPresenter.ViewSurface {
     //region private
 
     private fun inject() {
-        val app = activity.application as KotlinSampleToDoApp
+        val app = activity?.application as KotlinSampleToDoApp
         DaggerFragmentComponent.builder()
                 .appComponent(app.mAppComponent)
                 .fragmentModule(FragmentModule(this))
@@ -46,7 +45,6 @@ class ToDoItemListFragment : Fragment(), RemindersListPresenter.ViewSurface {
     }
 
     private fun initialiseRecyclerView() {
-        recycler_todo_items.layoutManager = LinearLayoutManager(activity.applicationContext)
     }
 
     //endregion
