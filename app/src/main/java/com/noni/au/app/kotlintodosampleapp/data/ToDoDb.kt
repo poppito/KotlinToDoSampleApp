@@ -9,7 +9,7 @@ import androidx.room.RoomDatabase
  * of the ToDoList Db.
  * @author harshoverseer
  */
-@Database(entities = arrayOf(ToDoItem::class), version = 1)
+@Database(entities = [ToDoItem::class], version = 1)
 abstract class ToDoDb : RoomDatabase() {
     abstract fun toDoDao(): ToDoDao
 }
